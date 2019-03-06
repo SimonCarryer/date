@@ -1,0 +1,30 @@
+
+<html>
+
+<head>
+<link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+<h1>Date!</h1>
+<div class="wrapper">
+<div class="container">
+        <img class="imageOne image" src="static/images/background.png">
+        <img class="imageTwo image" src="static/images/{{ date.partner }}/torso.png">
+        <img class="imageThree image" src="static/images/table.png">
+        <img class="imageFour image" src="static/images/{{ date.partner }}/{{ date.emotion }}.png">
+</div>
+<div class="nav">
+<form method="POST">
+        <input type="hidden" name="partner" value="{{ date.partner }}"/>
+        <input name="emotion" value="blush" type="submit"><br>
+        <input name="emotion" value="frown" type="submit"><br>
+        <input name="emotion" value="normal" type="submit"><br>
+    </form>
+</div>
+</div>
+
+</html>
+
+</body>
+
+

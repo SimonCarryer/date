@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  width: 640px;
+  height: 420px;
+}
+
+.nav {
+  top: 500px;
+  float: left;
+  position: absolute;
+}
+
+.wrapper {
+  float: left;
+}
