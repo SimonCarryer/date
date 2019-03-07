@@ -1,3 +1,5 @@
 .vscode
 .DS_Store
 date_env/*
+.ipynb_checkpoints/*
+*/__pycache__/*
