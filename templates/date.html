@@ -14,11 +14,14 @@
         <img class="imageFour image" src="static/images/{{ date.partner }}/{{ date.emotion }}.png">
 </div>
 <div class="nav">
+{{ date.state_json  }}
 <form method="POST">
         <input type="hidden" name="partner" value="{{ date.partner }}"/>
-        <input name="emotion" value="blush" type="submit"><br>
-        <input name="emotion" value="frown" type="submit"><br>
-        <input name="emotion" value="normal" type="submit"><br>
+        <input type="hidden" name="state_json" value="{{ date.state_json }}"/>
+        <input type="hidden" name="counter" value="{{ date.counter + 1}}"/>
+        {% for action in date.actions %}
+        <input name ="action" value="{{action}}" type="submit"><br>
+        {% endfor %}
     </form>
 </div>
 </div>
