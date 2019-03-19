@@ -8,7 +8,7 @@ import random
 application = Flask(__name__)
 cors = CORS(application)
 partners = ['grimaldi', 'louisa']
-actions = ['cars', 'sports', 'literature', 'history', 'machine learning and artificial intelligence', 'flirt', 'drink', 'leave']
+actions = ['popular music', 'sports', 'history', 'machine learning and artificial intelligence', 'flirt', 'drink', 'leave']
 def outcome_lookup(outcome):
     if outcome < -1:
         return 'worst'
@@ -26,6 +26,10 @@ def date():
     last_state = request.form.get('state_json', None)
     date = {'partner': partner}
     new_state, reward, done = get_date_response(last_state, action)
+    if action is not None and action in actions[:4]:
+        date['topic'] = action
+    else:
+        date['topic'] = None
     if reward < 0 and new_state['previous']['last_action'] != 6:
         date['emotion'] = 'frown'
     elif reward > 0:

@@ -12,15 +12,24 @@
         <img class="imageTwo image" src="static/images/{{ date.partner }}/torso.png">
         <img class="imageThree image" src="static/images/table.png">
         <img class="imageFour image" src="static/images/{{ date.partner }}/{{ date.emotion }}.png">
+        {% if date.topic %}<img class="imageOne image" src="static/images/speech/{{ date.topic }}/{{ date.counter % 3}}.png">{% endif %}
 </div>
 <div class="nav">
-{{ date.state_json  }}
 <form method="POST">
         <input type="hidden" name="partner" value="{{ date.partner }}"/>
         <input type="hidden" name="state_json" value="{{ date.state_json }}"/>
         <input type="hidden" name="counter" value="{{ date.counter + 1}}"/>
-        {% for action in date.actions %}
-        <input name ="action" value="{{action}}" type="submit"><br>
+        {% if date.topic %}<b>Keep talking about {{ date.topic }}:</b><br>
+        <input name="action" value="{{date.topic}}" type="submit"><br><br>
+        {% endif %}
+        <b>Choose a{% if date.topic %}nother{% endif %} topic to talk about:</b><br>
+        {% for action in date.actions[0:4] if action != date.topic %}
+        <input name="action" value="{{action}}" type="submit">
+        {% endfor %}
+        <br><br>
+        <b>Or take one of these actions instead:</b><br>
+        {% for action in date.actions[4:] %}
+        <input name="action" value="{{action}}" type="submit">
         {% endfor %}
     </form>
 </div>

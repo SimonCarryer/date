@@ -1,7 +1,7 @@
 import random
 
 reward_dict = {topic: {-1: (-1, False), 0: (0, False), 1: (1, False),  -2: (-3, True)} for topic in 
-     ['cars', 'sports', 'literature', 'history', 'machine learning and artificial intelligence']}
+     ['popular music', 'sports', 'history', 'machine learning and artificial intelligence']}
 reward_dict['flirt'] = {2: (12, True), -1: (-1, False), 0: (0, False), 1:(1, False), -2: (-6, True)}
 reward_dict['leave'] = {0: (-2, True)}
 reward_dict['drink'] = {0: (-1, False)}
@@ -9,7 +9,7 @@ reward_dict['drink'] = {0: (-1, False)}
 class LoveInterest:
     def __init__(self, attributes=None):
         if attributes is None:
-            topics = ['cars', 'sports', 'literature', 'history', 'machine learning and artificial intelligence']
+            topics = ['popular music', 'sports', 'history', 'machine learning and artificial intelligence']
             interests = random.sample([0, 1, 1, 2, 3], 5)
             self.interests = {topic: interest for topic, interest in zip(topics, interests)}
             self.attraction = 2
@@ -21,14 +21,14 @@ class LoveInterest:
         
     def talk(self, topic, quality):
         if quality >= 4:
-            return -2
+            return random.choice([0, 1])
         success_level = self.interests[topic] + quality
         if success_level >= 3:
             self.attraction += 1
             return random.choice([0, 1])
         if success_level <= 2:
             self.attraction -= 1
-            if self.attraction <= 0:
+            if self.attraction < 0:
                 return -2
             else:
                 return random.choice([0, -1])
@@ -39,13 +39,13 @@ class LoveInterest:
             if self.romance >=2:
                 return 2
             else:
-                return random.choice([0, 1])
+                return random.choice([0, 1, 1])
         else:
             self.attraction -= 1
-            if self.attraction <= 0:
+            if self.attraction < 0:
                 return -2
             else:
-                return random.choice([0, -1])
+                return random.choice([0, -1, -1])
 
     def state(self):
         return {'interests': self.interests, 'attraction': self.attraction, 'romance': self.romance}
@@ -86,7 +86,7 @@ class Me:
 
 class Date():
     def __init__(self, partner_attributes=None, me_attributes=None, previous=None, counter=0):
-        self.actions = ['cars', 'sports', 'literature', 'history', 'machine learning and artificial intelligence', 'flirt', 'drink', 'leave']
+        self.actions = ['popular music', 'sports', 'history', 'machine learning and artificial intelligence', 'flirt', 'drink', 'leave']
         self.partner = LoveInterest(attributes=partner_attributes)
         self.me = Me(attributes=me_attributes)
         self.counter = counter
