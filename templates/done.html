@@ -1,12 +1,22 @@
 <html>
     <head>
-
+        <link rel="stylesheet" href="../static/css/styles.css">
     </head>
     <body>
+        <div class="wrapper">
         <h1>Totally Accurate Date Simulator</h1>
-        {{outcome}}
-    </body>
+        {% if outcome == 'worst' %}
+        <p>Oh no! Your date has ended in disaster! Your conversation was dull, your jokes artless, and your partner was unimpressed. Better luck next time!</p>
+        {% endif %}
+        {% if outcome == 'ok' %}
+        <p>Alas! The night has come to an end, and you have nothing to show for it but a polite hug and a bill for dinner.</p>
+        {% endif %}
+        {% if outcome == 'best' %}
+        <p>Congratulations! The night has ended with a tentative kiss, and the promise of further romance!</p>
+        {% endif %}
     <form action="/date">
     <input method="post" value="Try again" type="submit"><br>
     </form>
+</div>
+</body>
 </html>

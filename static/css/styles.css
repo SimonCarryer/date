@@ -15,5 +15,8 @@
 }
 
 .wrapper {
-  float: left;
+  margin: auto; 
+  width: 55%;
+  padding: 20px; 
+  font-family:Garamond, Georgia, serif;
 }

@@ -7,7 +7,7 @@ import random
 
 application = Flask(__name__)
 cors = CORS(application)
-partners = ['grimaldi', 'louisa']
+partners = ['grimaldi', 'louisa', 'hugo']
 actions = ['popular music', 'sports', 'history', 'machine learning and artificial intelligence', 'flirt', 'drink', 'leave']
 def outcome_lookup(outcome):
     if outcome < -1:
@@ -30,7 +30,7 @@ def date():
         date['topic'] = action
     else:
         date['topic'] = None
-    if reward < 0 and new_state['previous']['last_action'] != 6:
+    if reward < 0 and new_state['previous']['last_action'] != 5:
         date['emotion'] = 'frown'
     elif reward > 0:
         date['emotion'] = 'blush'
